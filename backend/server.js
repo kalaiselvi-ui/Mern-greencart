@@ -44,7 +44,7 @@ app.use(
   })
 );
 
-app.get("/test", (req, res) => {
+app.get("/", (req, res) => {
   res.send("API is working");
 });
 
