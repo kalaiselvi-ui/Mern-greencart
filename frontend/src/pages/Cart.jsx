@@ -61,6 +61,11 @@ const Cart = () => {
 
   const placeOrder = async () => {
     try {
+      if (!user || !user._id) {
+        toast.error("User not logged in");
+        return;
+      }
+
       if (!selectedAddress) {
         toast.error("Please select an address");
       }
