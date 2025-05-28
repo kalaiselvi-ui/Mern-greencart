@@ -11,6 +11,7 @@ const ProductDetails = () => {
   const { category, id } = useParams();
 
   const product = products.find((item) => item._id === id);
+  console.log(product);
 
   useEffect(() => {
     if (products.length > 0) {

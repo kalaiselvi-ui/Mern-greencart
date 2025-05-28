@@ -38,6 +38,7 @@ const ProductList = () => {
                 <th className="px-4 py-3 font-semibold truncate hidden md:block">
                   Selling Price
                 </th>
+                <th className="px-4 py-3 font-semibold truncate">Actions</th>
                 <th className="px-4 py-3 font-semibold truncate">In Stock</th>
               </tr>
             </thead>
@@ -59,6 +60,16 @@ const ProductList = () => {
                   <td className="px-4 py-3">{product.category}</td>
                   <td className="px-4 py-3 max-sm:hidden">
                     ${product.offerPrice}
+                  </td>
+                  <td className="px-4 py-3">
+                    <button
+                      onClick={() =>
+                        (window.location.href = `/seller/edit-product/${product._id}`)
+                      }
+                      className="text-blue-500 underline"
+                    >
+                      Edit
+                    </button>
                   </td>
                   <td className="px-4 py-3">
                     <label className="relative inline-flex items-center cursor-pointer text-gray-900 gap-3">

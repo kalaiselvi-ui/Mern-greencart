@@ -10,7 +10,7 @@ const AddProduct = () => {
 
   const [formData, setFormData] = useState({
     name: "",
-    desc: "",
+    description: "",
     category: "",
     price: "",
     offerPrice: "",
@@ -59,7 +59,7 @@ const AddProduct = () => {
         toast.success(data.message);
         setFormData({
           name: "",
-          desc: "",
+          description: "",
           category: "",
           price: "",
           offerPrice: "",
@@ -133,8 +133,8 @@ const AddProduct = () => {
           </label>
           <textarea
             id="product-description"
-            name="desc"
-            value={formData.desc}
+            name="description"
+            value={formData.description}
             rows={4}
             onChange={handleChange}
             className="outline-none md:py-2.5 py-2 px-3 rounded border border-gray-500/40 resize-none"

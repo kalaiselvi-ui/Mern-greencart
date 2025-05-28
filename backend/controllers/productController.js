@@ -5,7 +5,7 @@ import streamifier from "streamifier";
 //add product : /api/product/add
 export const AddProduct = async (req, res) => {
   try {
-    const { name, desc, category, price, offerPrice } = req.body;
+    const { name, description, category, price, offerPrice } = req.body;
 
     const images = req.files;
 
@@ -36,9 +36,11 @@ export const AddProduct = async (req, res) => {
       req.files.map((file) => uploadToCloudinary(file.buffer))
     );
 
+    console.log("Description from req.body:", req.body.description);
+
     await Product.create({
       name,
-      desc,
+      description,
       category,
       price,
       offerPrice,
@@ -82,5 +84,25 @@ export const changeStock = async (req, res) => {
   } catch (error) {
     console.log(error);
     res.json({ success: false, message: error.message });
+  }
+};
+
+export const getProductId = async (req, res) => {
+  try {
+    const product = await Product.findById(req.params.id);
+    res.json({ product });
+  } catch (err) {
+    res.status(500).json({ message: "Product not found" });
+  }
+};
+
+export const updateProduct = async (req, res) => {
+  try {
+    const updated = await Product.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+    });
+    res.json({ success: true, message: "Product updated", product: updated });
+  } catch (err) {
+    res.status(500).json({ message: "Failed to update" });
   }
 };
