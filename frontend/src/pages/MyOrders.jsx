@@ -59,9 +59,9 @@ const MyOrders = () => {
                 </div>
                 <div className="ml-4">
                   <h2 className="text-xl font-medium text-gray-800">
-                    {item.product.name}
+                    {item.product?.name}
                   </h2>
-                  <p>Category: {item.product.category}</p>
+                  <p>Category: {item.product?.category}</p>
                 </div>
               </div>
               <div className="flex flex-col justify-center md:ml-8 mb-4 md:mb-0">
@@ -70,7 +70,7 @@ const MyOrders = () => {
                 <p>Date: {new Date(order.createdAt).toLocaleDateString()}</p>
               </div>
               <p className="text-primary text-lg font-medium">
-                Amount: ${item.product.offerPrice * item.quantity}
+                Amount: ${item.product?.offerPrice * item.quantity}
               </p>
             </div>
           ))}
