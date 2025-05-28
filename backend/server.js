@@ -51,6 +51,15 @@ app.get("/", (req, res) => {
   res.send("API is working");
 });
 
+app.get("/test-cookie", (req, res) => {
+  res.cookie("testCookie", "hello", {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax",
+  });
+  res.json({ message: "Cookie should be set" });
+});
+
 app.use("/api/user", userRouter);
 app.use("/api/seller", sellerRouter);
 app.use("/api/product", productRouter);
